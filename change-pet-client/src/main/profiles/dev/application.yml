@@ -1,0 +1,4 @@
+server:
+  port: 8519
+  servlet:
+    context-path: /change-pet-client
