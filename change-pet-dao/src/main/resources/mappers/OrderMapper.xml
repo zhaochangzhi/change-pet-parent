@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.change.pet.dao.OrderMapper">
+
+  <sql id="column">
+     id,version,create_time,create_user_id,create_user,update_time,update_user_id,update_user,status,order_sn,group_id,order_type,business_model_id,customer_id,order_address_id,store_id,eshop_id,order_status,order_source,invoice_status,buyer_remark,seller_remark,employee_remark,store_remark,abnormal_type,abnormal_remark,delivery_type,trading_price,payable_price,score,is_split,employee_id,employee_phone,employee_name,appointment_start_time,appointment_end_time,eshop_combo_pro_id,expiry_date,combo_price,total_quantity,groupon_instance_id,order_sn_reserve,normal_store_id,third_part,sign_time
+  </sql>
+
+
+  <select id="getOrderList" parameterType="com.change.pet.entity.condition.OrderPageCondition"
+    resultType="com.change.pet.entity.po.OrderPO">
+    SELECT
+    <include refid="column"/>
+    FROM t_order
+    <where>
+      <if test="signStartTime != null and signStartTime !='' ">
+        and sign_time <![CDATA[   >=  ]]>#{signStartTime}
+      </if>
+      <if test="signEndTime != null and signStartTime !=''">
+        and sign_time <![CDATA[   <  ]]>#{signEndTime}
+      </if>
+    </where>
+  </select>
+
+  <update id="updateOrder" parameterType="com.change.pet.entity.po.OrderPO">
+    update t_order
+    <set>
+      version = version+1,
+      <if test="status != null">status = #{status},</if>
+      update_time = now(),
+      <if test="updateUserId != null">update_user_id = #{updateUserId},</if>
+      <if test="updateUser != null and updateUser !=''">update_user = #{updateUser},</if>
+      <if test="orderSn != null and orderSn !=''">order_sn = #{orderSn},</if>
+      <if test="groupId != null and groupId !=''">group_id = #{groupId},</if>
+      <if test="orderType != null and orderType !=''">order_type = #{orderType},</if>
+      <if test="businessModelId != null and businessModelId !=''">business_model_id = #{businessModelId},
+      </if>
+      <if test="customerId != null and customerId !=''">customer_id = #{customerId},</if>
+      <if test="orderAddressId != null and orderAddressId !=''">order_address_id = #{orderAddressId},</if>
+      <if test="storeId != null and storeId !=''">store_id = #{storeId},</if>
+      <if test="eshopId != null and eshopId !=''">eshop_id = #{eshopId},</if>
+      <if test="orderStatus != null and orderStatus !=''">order_status = #{orderStatus},</if>
+      <if test="orderSource != null and orderSource !=''">order_source = #{orderSource},</if>
+      <if test="invoiceStatus != null and invoiceStatus !=''">invoice_status = #{invoiceStatus},</if>
+      <if test="buyerRemark != null and buyerRemark !=''">buyer_remark = #{buyerRemark},</if>
+      <if test="sellerRemark != null and sellerRemark !=''">seller_remark = #{sellerRemark},</if>
+      <if test="employeeRemark != null and employeeRemark !=''">employee_remark = #{employeeRemark},</if>
+      <if test="storeRemark != null and storeRemark !=''">store_remark = #{storeRemark},</if>
+      <if test="abnormalType != null and abnormalType !=''">abnormal_type = #{abnormalType},</if>
+      <if test="abnormalRemark != null and abnormalRemark !=''">abnormal_remark = #{abnormalRemark},</if>
+      <if test="deliveryType != null and deliveryType !=''">delivery_type = #{deliveryType},</if>
+      <if test="tradingPrice != null ">trading_price = #{tradingPrice},</if>
+      <if test="payablePrice != null ">payable_price = #{payablePrice},</if>
+      <if test="score != null ">score = #{score},</if>
+      <if test="isSplit != null and isSplit !=''">is_split = #{isSplit},</if>
+      <if test="employeeId != null and employeeId !=''">employee_id = #{employeeId},</if>
+      <if test="employeePhone != null and employeePhone !=''">employee_phone = #{employeePhone},</if>
+      <if test="employeeName != null and employeeName !=''">employee_name = #{employeeName},</if>
+      <if test="appointmentStartTime != null ">appointment_start_time = #{appointmentStartTime},</if>
+      <if test="appointmentEndTime != null ">appointment_end_time = #{appointmentEndTime},</if>
+      <if test="eshopComboProId != null and eshopComboProId !=''">eshop_combo_pro_id =  #{eshopComboProId},</if>
+      <if test="expiryDate != null ">expiry_date = #{expiryDate},</if>
+      <if test="comboPrice != null ">combo_price = #{comboPrice},</if>
+      <if test="totalQuantity != null ">total_quantity = #{totalQuantity},</if>
+      <if test="grouponInstanceId != null and grouponInstanceId !=''">groupon_instance_id = #{grouponInstanceId},</if>
+      <if test="orderSnReserve != null and orderSnReserve !=''">order_sn_reserve = #{orderSnReserve},</if>
+      <if test="normalStoreId != null and normalStoreId !=''">normal_store_id = #{normalStoreId},</if>
+      <if test="thirdPart != null and thirdPart !=''">third_part = #{thirdPart},</if>
+      <if test="signTime != null ">sign_time = #{signTime}</if>
+    </set>
+    <where>
+      id=#{id}
+    </where>
+  </update>
+
+
+  <insert id="insertOrder" parameterType="com.change.pet.entity.po.OrderPO">
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      id,create_time,create_user_id,create_user,status,
+      <if test="orderSn != null and orderSn !=''">order_sn,</if>
+      <if test="groupId != null and groupId !=''">group_id,</if>
+      <if test="orderType != null and orderType !=''">order_type,</if>
+      <if test="businessModelId != null and businessModelId !=''">business_model_id,</if>
+      <if test="customerId != null and customerId !=''">customer_id,</if>
+      <if test="orderAddressId != null and orderAddressId !=''">order_address_id,</if>
+      <if test="storeId != null and storeId !=''">store_id,</if>
+      <if test="eshopId != null and eshopId !=''">eshop_id,</if>
+      <if test="orderStatus != null and orderStatus !=''">order_status,</if>
+      <if test="orderSource != null and orderSource !=''">order_source,</if>
+      <if test="invoiceStatus != null and invoiceStatus !=''">invoice_status,</if>
+      <if test="buyerRemark != null and buyerRemark !=''">buyer_remark,</if>
+      <if test="sellerRemark != null and sellerRemark !=''">seller_remark,</if>
+      <if test="employeeRemark != null and employeeRemark !=''">employee_remark,</if>
+      <if test="storeRemark != null and storeRemark !=''">store_remark,</if>
+      <if test="abnormalType != null and abnormalType !=''">abnormal_type,</if>
+      <if test="abnormalRemark != null and abnormalRemark !=''">abnormal_remark,</if>
+      <if test="deliveryType != null and deliveryType !=''">delivery_type,</if>
+      <if test="tradingPrice != null ">trading_price,</if>
+      <if test="payablePrice != null ">payable_price,</if>
+      <if test="score != null ">score,</if>
+      <if test="isSplit != null and isSplit !=''">is_split,</if>
+      <if test="employeeId != null and employeeId !=''">employee_id,</if>
+      <if test="employeePhone != null and employeePhone !=''">employee_phone,</if>
+      <if test="employeeName != null and employeeName !=''">employee_name,</if>
+      <if test="appointmentStartTime != null ">appointment_start_time,</if>
+      <if test="appointmentEndTime != null ">appointment_end_time,</if>
+      <if test="eshopComboProId != null and eshopComboProId !=''">eshop_combo_pro_id,</if>
+      <if test="expiryDate != null ">expiry_date,</if>
+      <if test="comboPrice != null ">combo_price,</if>
+      <if test="totalQuantity != null ">total_quantity,</if>
+      <if test="grouponInstanceId != null and grouponInstanceId !=''">groupon_instance_id,</if>
+      <if test="orderSnReserve != null and orderSnReserve !=''">order_sn_reserve,</if>
+      <if test="normalStoreId != null and normalStoreId !=''">normal_store_id,</if>
+      <if test="thirdPart != null and thirdPart !=''">third_part,</if>
+      <if test="signTime != null ">sign_time</if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      #{id},now(),#{createUserId},#{createUser},'0',
+      <if test="orderSn != null and orderSn !=''">#{orderSn},</if>
+      <if test="groupId != null and groupId !=''">#{groupId},</if>
+      <if test="orderType != null and orderType !=''">#{orderType},</if>
+      <if test="businessModelId != null and businessModelId !=''">#{businessModelId},</if>
+      <if test="customerId != null and customerId !=''">#{customerId},</if>
+      <if test="orderAddressId != null and orderAddressId !=''">#{orderAddressId},</if>
+      <if test="storeId != null and storeId !=''">#{storeId},</if>
+      <if test="eshopId != null and eshopId !=''">#{eshopId},</if>
+      <if test="orderStatus != null and orderStatus !=''">#{orderStatus},</if>
+      <if test="orderSource != null and orderSource !=''">#{orderSource},</if>
+      <if test="invoiceStatus != null and invoiceStatus !=''">#{invoiceStatus},</if>
+      <if test="buyerRemark != null and buyerRemark !=''">#{buyerRemark},</if>
+      <if test="sellerRemark != null and sellerRemark !=''">#{sellerRemark},</if>
+      <if test="employeeRemark != null and employeeRemark !=''">#{employeeRemark},</if>
+      <if test="storeRemark != null and storeRemark !=''">#{storeRemark},</if>
+      <if test="abnormalType != null and abnormalType !=''">#{abnormalType},</if>
+      <if test="abnormalRemark != null and abnormalRemark !=''">#{abnormalRemark},</if>
+      <if test="deliveryType != null and deliveryType !=''">#{deliveryType},</if>
+      <if test="tradingPrice != null ">#{tradingPrice},</if>
+      <if test="payablePrice != null ">#{payablePrice},</if>
+      <if test="score != null ">#{score},</if>
+      <if test="isSplit != null and isSplit !=''">#{isSplit},</if>
+      <if test="employeeId != null and employeeId !=''">#{employeeId},</if>
+      <if test="employeePhone != null and employeePhone !=''">#{employeePhone},</if>
+      <if test="employeeName != null and employeeName !=''">#{employeeName},</if>
+      <if test="appointmentStartTime != null ">#{appointmentStartTime},</if>
+      <if test="appointmentEndTime != null ">#{appointmentEndTime},</if>
+      <if test="eshopComboProId != null and eshopComboProId !=''">#{eshopComboProId},</if>
+      <if test="expiryDate != null ">#{expiryDate},</if>
+      <if test="comboPrice != null ">#{comboPrice},</if>
+      <if test="totalQuantity != null ">#{totalQuantity},</if>
+      <if test="grouponInstanceId != null and grouponInstanceId !=''">#{grouponInstanceId},</if>
+      <if test="orderSnReserve != null and orderSnReserve !=''">#{orderSnReserve},</if>
+      <if test="normalStoreId != null and normalStoreId !=''">#{normalStoreId},</if>
+      <if test="thirdPart != null and thirdPart !=''">#{thirdPart},</if>
+      <if test="signTime != null ">#{signTime}</if>
+    </trim>
+  </insert>
+
+
+  <!--根据id删除 -->
+  <update id="deleteById" parameterType="java.lang.String">
+    update t_order
+    <set>
+      version = version+1,status=1,update_time = now(),
+    </set>
+    <where>
+      id=#{id}
+    </where>
+  </update>
+
+
+</mapper>

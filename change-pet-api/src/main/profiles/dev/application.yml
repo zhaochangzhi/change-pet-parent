@@ -11,9 +11,9 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://opm01.taoche.cn:20051/ucarcrm?characterEncoding=utf-8&useSSL=true&autoReconnect=true
-    username: temp_admin
-    password: temp_admin@2018
+    url: jdbc:mysql://localhost:3306/change_pet?serverTimezone=UTC&characterEncoding=utf-8&useSSL=true&autoReconnect=true
+    username: root
+    password: root
     druid:
       initial-size: 3
       min-idle: 1
@@ -42,6 +42,7 @@ mybatis:
   #设置输出sql log
   configuration:
       log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+      map-underscore-to-camel-case: true
 
 
 pagehelper:

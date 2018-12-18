@@ -12,9 +12,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 public class ChangePetSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Override
-	protected void configure(HttpSecurity httpSecurity) throws Exception {
-
-		super.configure(httpSecurity);
-	}
+  @Override
+  protected void configure(HttpSecurity httpSecurity) throws Exception {
+    httpSecurity.authorizeRequests()
+        .antMatchers("/order", "/index").permitAll();
+    httpSecurity.csrf().disable();
+    //	super.configure(httpSecurity);
+  }
 }

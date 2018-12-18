@@ -15,10 +15,7 @@
 
     <dependencies>
         <!-- spring cloud eureka client -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
+
         <!-- module -->
         <dependency>
             <groupId>com.change.pet</groupId>
