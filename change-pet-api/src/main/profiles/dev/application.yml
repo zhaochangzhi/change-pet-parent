@@ -45,6 +45,10 @@ mybatis:
       map-underscore-to-camel-case: true
 
 
+
+
+      
+
 pagehelper:
   helper-dialect: mysql
   offset-as-page-num: true
