@@ -1,5 +1,5 @@
 server:
-  port: 8518
+  port: 8888
 #spring boot 组件配置
 spring:
   #redis
@@ -41,8 +41,8 @@ mybatis:
   type-aliases-package: com.change.pet.entity
   #设置输出sql log
   configuration:
-      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
 
 pagehelper:
   helper-dialect: mysql

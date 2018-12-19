@@ -10,7 +10,7 @@ public class LogConstants {
 	/**
 	 * 日志格式 info
 	 */
-	public static final String LOG_INFO_CLASS_FUNC_PARAM = "\n类：{%s},\n 方法：{%s},\n 参数：{%s}\n";
+	public static final String LOG_INFO_CLASS_FUNC_PARAM = "%n类：{%s},%n 方法：{%s}, 参数：{%s}%n";
 
 	/**
 	 * 日志格式 error

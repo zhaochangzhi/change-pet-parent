@@ -1,5 +1,7 @@
 package com.change.pet.common.utils;
 
+import org.apache.commons.lang3.StringUtils;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.UUID;
 
@@ -8,7 +10,7 @@ import java.util.UUID;
  * @description 字符串工具类
  * @date 2018/10/8 17:25
  */
-public class StringUtils extends org.apache.commons.lang3.StringUtils {
+public class StringUtil extends StringUtils {
 
 	/**
 	 * 生成32位uuid

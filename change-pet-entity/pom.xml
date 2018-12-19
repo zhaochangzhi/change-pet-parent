@@ -20,6 +20,11 @@
             <artifactId>change-pet-common</artifactId>
             <version>${parent.version}</version>
         </dependency>
+        <!--swagger API-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
 
     </dependencies>
 

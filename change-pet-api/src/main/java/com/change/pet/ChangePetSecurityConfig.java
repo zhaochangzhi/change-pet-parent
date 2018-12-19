@@ -14,7 +14,10 @@ public class ChangePetSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-
-		super.configure(httpSecurity);
+		httpSecurity.authorizeRequests()
+				.antMatchers("/api/**", "/index", "/error").permitAll()
+				.antMatchers("/manage/**").authenticated()
+				.and()
+				.csrf().disable();
 	}
 }
