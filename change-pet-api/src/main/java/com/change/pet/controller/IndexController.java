@@ -7,6 +7,7 @@ import com.change.pet.common.response.ResultVO;
 import com.change.pet.entity.condition.UserCondition;
 import com.change.pet.entity.vo.UserVO;
 import com.change.pet.service.IUserService;
+import com.github.pagehelper.PageHelper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.log4j.Log4j2;
@@ -37,6 +38,8 @@ public class IndexController {
 				"IndexController",
 				"index",
 				JSON.toJSONString(condition)));
+		//使用page helper
+		PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
 		PageVO<UserVO> page = userService.getListByCondition(condition);
 		return ResultVO.success(page);
 	}

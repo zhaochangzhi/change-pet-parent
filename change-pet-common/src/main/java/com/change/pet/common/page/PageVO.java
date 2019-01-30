@@ -1,7 +1,6 @@
 package com.change.pet.common.page;
 
 import com.github.pagehelper.Page;
-import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +9,7 @@ import java.util.List;
 
 /**
  * @author zhaochangzhi
- * @description
+ * @description 分页
  * @date 2018/9/20 15:09
  */
 @Data

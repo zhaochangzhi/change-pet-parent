@@ -10,6 +10,7 @@
         <module>change-pet-dao</module>
         <module>change-pet-service</module>
         <module>change-pet-entity</module>
+        <module>change-pet-aop</module>
     </modules>
 
     <parent>
@@ -49,6 +50,8 @@
         <commons-lang3.version>3.7</commons-lang3.version>
         <!-- spring cloud -->
         <spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+        <!-- aspectjweaver -->
+        <aspectjweaver.version>1.8.10</aspectjweaver.version>
     </properties>
 
     <!-- 选择继承 -->
@@ -98,6 +101,12 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons-lang3.version}</version>
+            </dependency>
+            <!-- aspectjweaver -->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectjweaver.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
