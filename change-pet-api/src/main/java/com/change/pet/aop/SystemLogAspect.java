@@ -1,5 +1,6 @@
 package com.change.pet.aop;
 
+import lombok.extern.log4j.Log4j2;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
  */
 @Aspect
 @Component
+@Log4j2
 public class SystemLogAspect extends ControllerAspect {
 
 	/**
@@ -28,7 +30,7 @@ public class SystemLogAspect extends ControllerAspect {
 	 */
 	@Override
 	public void doBefore(JoinPoint joinPoint) {
-
+		log.info("controller前置切面");
 	}
 
 
@@ -39,6 +41,6 @@ public class SystemLogAspect extends ControllerAspect {
 	 */
 	@Override
 	public void doAfter(JoinPoint joinPoint) {
-
+		log.info("controller后置切面");
 	}
 }

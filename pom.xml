@@ -11,6 +11,7 @@
         <module>change-pet-service</module>
         <module>change-pet-entity</module>
         <module>change-pet-aop</module>
+        <module>adocs</module>
     </modules>
 
     <parent>
