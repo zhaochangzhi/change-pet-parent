@@ -2,7 +2,10 @@ package com.change.pet.aop;
 
 import lombok.extern.log4j.Log4j2;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,6 +22,7 @@ public class SystemLogAspect extends ControllerAspect {
 	 * Controller层切点,注解方式
 	 */
 	@Override
+	@Pointcut("execution(* *..controller..*Controller*.*(..))")
 	public void controllerAspect() {
 
 	}
@@ -29,10 +33,10 @@ public class SystemLogAspect extends ControllerAspect {
 	 * @param joinPoint 切点
 	 */
 	@Override
+	@Before("controllerAspect()")
 	public void doBefore(JoinPoint joinPoint) {
 		log.info("controller前置切面");
 	}
-
 
 	/**
 	 * 后置通知(在方法执行之后返回) 用于拦截Controller层操作
@@ -40,6 +44,7 @@ public class SystemLogAspect extends ControllerAspect {
 	 * @param joinPoint 切点
 	 */
 	@Override
+	@After("controllerAspect()")
 	public void doAfter(JoinPoint joinPoint) {
 		log.info("controller后置切面");
 	}

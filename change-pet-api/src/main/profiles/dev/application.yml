@@ -33,8 +33,15 @@ spring:
         stat:
           log-slow-sql: true
           slow-sql-millis: 10000
+        log4j:
+          result-set-log-enabled: false
+          statement-executable-sql-log-enable: false
       stat-view-servlet:
         enabled: true
+        reset-enable: true
+        url-pattern: /druid/*
+        login-username: change-pet
+        login-password: change@pet!
 #mybatis
 mybatis:
   mapper-locations: classpath:mappers/*Mapper.xml

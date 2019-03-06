@@ -11,22 +11,16 @@
 
     <name>change-pet-entity</name>
     <artifactId>change-pet-entity</artifactId>
-    <version>${parent.version}</version>
-    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>com.change.pet</groupId>
             <artifactId>change-pet-common</artifactId>
-            <version>${parent.version}</version>
         </dependency>
         <!--swagger API-->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
         </dependency>
-
     </dependencies>
-
-
 </project>

@@ -19,5 +19,6 @@ public class ChangePetSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/manage/**").authenticated()
 				.and()
 				.csrf().disable();
+
 	}
 }

@@ -16,12 +16,10 @@
         <dependency>
             <groupId>com.change.pet</groupId>
             <artifactId>change-pet-entity</artifactId>
-            <version>${parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.change.pet</groupId>
             <artifactId>change-pet-common</artifactId>
-            <version>${parent.version}</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>

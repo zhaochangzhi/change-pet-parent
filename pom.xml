@@ -58,6 +58,33 @@
     <!-- 选择继承 -->
     <dependencyManagement>
         <dependencies>
+            <!-- module -->
+            <dependency>
+                <groupId>com.change.pet</groupId>
+                <artifactId>change-pet-entity</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.change.pet</groupId>
+                <artifactId>change-pet-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.change.pet</groupId>
+                <artifactId>change-pet-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.change.pet</groupId>
+                <artifactId>change-pet-dao</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.change.pet</groupId>
+                <artifactId>change-pet-aop</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
             <!-- spring cloud -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>

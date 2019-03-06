@@ -10,7 +10,6 @@
     </parent>
     <name>change-pet-api</name>
     <artifactId>change-pet-api</artifactId>
-    <version>${parent.version}</version>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -23,27 +22,22 @@
         <dependency>
             <groupId>com.change.pet</groupId>
             <artifactId>change-pet-entity</artifactId>
-            <version>${parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.change.pet</groupId>
             <artifactId>change-pet-common</artifactId>
-            <version>${parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.change.pet</groupId>
             <artifactId>change-pet-service</artifactId>
-            <version>${parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.change.pet</groupId>
             <artifactId>change-pet-dao</artifactId>
-            <version>${parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.change.pet</groupId>
             <artifactId>change-pet-aop</artifactId>
-            <version>${parent.version}</version>
         </dependency>
         <!-- spring boot web 启动类 -->
         <dependency>
